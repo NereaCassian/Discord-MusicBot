@@ -16,12 +16,6 @@ services:
     tty: true
     volumes:
       - ../djs-bot:/djs-bot
-    depends_on:
-      - postgres-db
-      - lavalink
-    ports:
-      - "8080:8080"
-      - "3001:3001"
     working_dir: /djs-bot
     command: ["npm", "run", "${ENABLE:-start}", "--loglevel=error"]
     env_file:
@@ -37,11 +31,6 @@ services:
     tty: true
     volumes:
       - ../dashboard:/dashboard
-    depends_on:
-      - postgres-db
-      - lavalink
-    ports:
-      - "3000:3000"
     working_dir: /dashboard
     command: sh -c "
       npm config set fund false &&
